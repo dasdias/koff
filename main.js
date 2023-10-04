@@ -12,21 +12,21 @@ import 'swiper/css';
 
 
 var swiperThumbnails = new Swiper(".product__slider-thumbnails", {
-	spaceBetween: 10,
-	slidesPerView: 4,
-	freeMode: true,
-	watchSlidesProgress: true,
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
 });
 var swiper2 = new Swiper(".product__slider-main", {
-	spaceBetween: 10,
-	navigation: {
-		nextEl: ".product__arrow-next",
-		prevEl: ".product__arrow-prev",
-	},
-	modules: [Navigation, Thumbs],
-	thumbs: {
-		swiper: swiperThumbnails,
-	},
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".product__arrow_next",
+    prevEl: ".product__arrow_prev",
+  },
+  modules: [Navigation, Thumbs],
+  thumbs: {
+    swiper: swiperThumbnails,
+  },
 });
 
 // document.querySelector('#app').innerHTML = `

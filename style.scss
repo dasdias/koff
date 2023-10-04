@@ -1,11 +1,11 @@
 :root {
-	--black: #1C1C1C;
-	--form: #EEEFF2;
-	--grey: #969EAE;
-	--violet: #780096;
-	--violet-hover: #9200B7;
-	--violet-active: #780096;
-	--violet-disabled: rgba(120, 0, 150, 0.2);
+  --black: #1C1C1C;
+  --form: #EEEFF2;
+  --grey: #969EAE;
+  --violet: #780096;
+  --violet-hover: #9200B7;
+  --violet-active: #780096;
+  --violet-disabled: rgba(120, 0, 150, 0.2);
 }
 
 @import "styles/default";
@@ -22,21 +22,22 @@
 @import "styles/order";
 @import "styles/product";
 @import "styles/radio";
+@import "styles/table";
 
 
 
 *,
 *::after,
 *::before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-	// font-family: 'Inter', sans-serif;
-	font-family: 'Open Sans', sans-serif;
+  // font-family: 'Inter', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .footer {
-	background-color: var(--black);
+  background-color: var(--black);
 }
