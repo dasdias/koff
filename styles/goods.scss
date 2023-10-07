@@ -1,56 +1,62 @@
 .goods {
-	padding-top: 24px;
+  padding-top: 24px;
 
-	@media (min-width: 580px) {
-		padding-top: 32px;
-	}
+  @media (min-width: 580px) {
+    padding-top: 32px;
+  }
 
-	@media (min-width: 820px) {
-		padding-top: 40px;
-	}
+  @media (min-width: 820px) {
+    padding-top: 40px;
+  }
 
-	// .goods__title
+  // .goods__title
 
-	&__title {
-		font-size: 24px;
-		font-weight: 700;
-		margin-bottom: 24px;
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
 
-		@media (min-width: 580px) {
-			margin-bottom: 32px;
-			font-size: 32px;
-		}
+    @media (min-width: 580px) {
+      margin-bottom: 32px;
+      font-size: 32px;
+    }
 
-		@media (min-width: 820px) {
-			margin-bottom: 42px;
-		}
-	}
+    @media (min-width: 820px) {
+      margin-bottom: 42px;
+    }
+  }
 
-	// .goods__list
+  // .goods__list
 
-	&__list {
-		display: grid;
-		gap: 50px 8px;
-		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  &__list {
+    display: grid;
+    gap: 50px 8px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    margin-bottom: 32px;
 
-		@media (min-width: 580px) {
-			gap: 68px 10px;
-			grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    @media (min-width: 580px) {
+      gap: 68px 10px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      margin-bottom: 40px;
+    }
 
-		}
+    @media (min-width: 820px) {
+      gap: 81px 16px;
+      grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
 
-		@media (min-width: 820px) {
-			gap: 81px 16px;
-			grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
+    }
 
-		}
-	}
+    &:last-child {
+      margin-bottom: 0;
+    }
 
-	// .goods__item
+  }
 
-	&__item {}
+  // .goods__item
 
-	// .goods__card
+  &__item {}
 
-	&__card {}
+  // .goods__card
+
+  &__card {}
 }
