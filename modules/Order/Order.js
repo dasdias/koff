@@ -21,7 +21,7 @@ export class Order {
     this.element.insertAdjacentHTML('beforeend', this.getHTML())
     elementMain.append(this.element)
 
-    document.body.append(elementMain)
+    // document.body.append(elementMain)
     this.isMoumted = true;
   }
 

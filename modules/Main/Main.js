@@ -24,12 +24,4 @@ export class Main {
     this.element.remove();
     this.isMoumted = false;
   }
-
-  element() {
-    if (this.isMoumted) {
-      return
-    }
-    this.isMoumted = true;
-    return Main.instance;
-  }
 }
