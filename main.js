@@ -1,36 +1,75 @@
 import "normalize.css"
 import './style.scss'
-// import Swiper JS
-import { Navigation, Thumbs } from 'swiper/modules';
-import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/css';
+import Navigo from "navigo";
+import { Header } from "./modules/Header/Header";
+import { Main } from "./modules/Main/Main";
+import { Footer } from "./modules/Footer/Footer";
+import { Order } from "./modules/Order/Order";
 
-// import javascriptLogo from './javascript.svg'
-// import viteLogo from '/vite.svg'
-// import { setupCounter } from './counter.js'
+const productSlider = () => {
+  Promise.all([
+    import('swiper/modules'),
+    import('swiper'),
+    import('swiper/css')
+  ]).then(([{ Navigation, Thumbs }, Swiper]) => {
+
+    const swiperThumbnails = new Swiper.default(".product__slider-thumbnails", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+
+    const swiper2 = new Swiper.default(".product__slider-main", {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".product__arrow_next",
+        prevEl: ".product__arrow_prev",
+      },
+      modules: [Navigation, Thumbs],
+      thumbs: {
+        swiper: swiperThumbnails,
+      },
+    });
+
+  })
+}
+
+const init = () => {
+  new Header().mount();
 
 
-var swiperThumbnails = new Swiper(".product__slider-thumbnails", {
-  spaceBetween: 10,
-  slidesPerView: 4,
-  freeMode: true,
-  watchSlidesProgress: true,
-});
-var swiper2 = new Swiper(".product__slider-main", {
-  spaceBetween: 10,
-  navigation: {
-    nextEl: ".product__arrow_next",
-    prevEl: ".product__arrow_prev",
-  },
-  modules: [Navigation, Thumbs],
-  thumbs: {
-    swiper: swiperThumbnails,
-  },
-});
+  productSlider();
 
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//    <h1>Hello js</h1>
-//   </div>
-// `
+  const router = new Navigo('/', { linksSelector: 'a[href^="/"]' })
+  router.on("/", () => {
+    new Main().mount();
+    console.log('На главной');
+  })
+    .on("/category", () => {
+      console.log('category');
+    })
+    .on("/favorite", () => {
+      console.log('favorite');
+    })
+    .on("/search", () => {
+      console.log('search');
+    })
+    .on("/product/:id", (obj) => {
+      console.log(obj);
+    })
+    .on("/cart", () => {
+      console.log('cart');
+    })
+    .on("/order", () => {
+      new Order().mount(new Main().element);
+      console.log('order');
+    })
+    .notFound(() => {
+      console.log('404');
+    })
+  router.resolve();
+  new Footer().mount();
+}
+
+init();
