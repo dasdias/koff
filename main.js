@@ -85,12 +85,19 @@ const init = () => {
     })
     .notFound(() => {
       new Main().element.innerHTML = `
-      <h2>Страница не найдена</h2>
-      <p>Через 5 секунд вы будите перенаправлены <a href="/">на главную страницу</a></p>
+      <div class="container">
+        <h2>Страница не найдена</h2>
+        <p>Через 5 секунд вы будите перенаправлены <a href="/">на главную страницу</a></p>
+      </div>
       `;
       setTimeout(() => {
         router.navigate('/');
       }, 5000);
+    }, {
+      leave(done) {
+        new Main().element.textContent = '';
+        done()
+      }
     })
   router.resolve();
   new Footer().mount();
