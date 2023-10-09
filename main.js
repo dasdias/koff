@@ -53,7 +53,6 @@ const init = () => {
 		},
 		already() {
 
-<<<<<<< HEAD
     }
   })
     .on("/category", () => {
@@ -103,50 +102,6 @@ const init = () => {
     })
   router.resolve();
   new Footer().mount();
-=======
-		}
-	})
-		.on("/category", () => {
-			console.log('category');
-			new ProductList().mount(new Main().element, [1, 2, 3, 4, 5, 6], "Категория")
-		}, {
-			leave(done) {
-				done()
-			}
-		})
-		.on("/favorite", () => {
-			console.log('favorite');
-			new ProductList().mount(new Main().element, [1, 2, 3], "Избранное")
-		}, {
-			leave(done) {
-				done()
-			}
-		})
-		.on("/search", () => {
-			console.log('search');
-		})
-		.on("/product/:id", (obj) => {
-			console.log(obj);
-		})
-		.on("/cart", () => {
-			console.log('cart');
-		})
-		.on("/order", () => {
-			new Order().mount(new Main().element);
-			console.log('order');
-		})
-		.notFound(() => {
-			new Main().element.innerHTML = `
-      <h2>Страница не найдена</h2>
-      <p>Через 5 секунд вы будите перенаправлены <a href="/">на главную страницу</a></p>
-      `;
-			setTimeout(() => {
-				router.navigate('/');
-			}, 5000);
-		})
-	router.resolve();
-
->>>>>>> efcc521e2112c7e197fd4ee6ca24d6aa42243d10
 }
 
 init();
