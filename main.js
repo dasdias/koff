@@ -6,52 +6,56 @@ import { Main } from "./modules/Main/Main";
 import { Footer } from "./modules/Footer/Footer";
 import { Order } from "./modules/Order/Order";
 import { ProductList } from "./modules/ProductList/ProductList";
+import { ApiService } from "./services/ApiService";
 
 const productSlider = () => {
-	Promise.all([
-		import('swiper/modules'),
-		import('swiper'),
-		import('swiper/css')
-	]).then(([{ Navigation, Thumbs }, Swiper]) => {
+  Promise.all([
+    import('swiper/modules'),
+    import('swiper'),
+    import('swiper/css')
+  ]).then(([{ Navigation, Thumbs }, Swiper]) => {
 
-		const swiperThumbnails = new Swiper.default(".product__slider-thumbnails", {
-			spaceBetween: 10,
-			slidesPerView: 4,
-			freeMode: true,
-			watchSlidesProgress: true,
-		});
+    const swiperThumbnails = new Swiper.default(".product__slider-thumbnails", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
 
-		const swiper2 = new Swiper.default(".product__slider-main", {
-			spaceBetween: 10,
-			navigation: {
-				nextEl: ".product__arrow_next",
-				prevEl: ".product__arrow_prev",
-			},
-			modules: [Navigation, Thumbs],
-			thumbs: {
-				swiper: swiperThumbnails,
-			},
-		});
+    const swiper2 = new Swiper.default(".product__slider-main", {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".product__arrow_next",
+        prevEl: ".product__arrow_prev",
+      },
+      modules: [Navigation, Thumbs],
+      thumbs: {
+        swiper: swiperThumbnails,
+      },
+    });
 
-	})
+  })
 }
 
 const init = () => {
-	new Header().mount();
-	new Main().mount();
-	new Footer().mount();
+  const api = new ApiService();
+  new Header().mount();
+  new Main().mount();
+  new Footer().mount();
 
 
-	productSlider();
+  productSlider();
 
-	const router = new Navigo('/', { linksSelector: 'a[href^="/"]' })
-	router.on("/", () => {
-		new ProductList().mount(new Main().element, [1, 2, 3, 4], "Товары")
-	}, {
-		leave(done) {
-			done()
-		},
-		already() {
+  const router = new Navigo('/', { linksSelector: 'a[href^="/"]' })
+
+  router.on("/", async () => {
+    const product = await api.getProducts();
+    new ProductList().mount(new Main().element, product, "Товары")
+  }, {
+    leave(done) {
+      done()
+    },
+    already() {
 
     }
   })
