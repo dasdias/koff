@@ -1,0 +1,45 @@
+.not-found {
+  padding-top: 50px;
+  margin-bottom: 60px;
+
+  // .not-found__container
+
+  &__container {}
+
+  // .not-found__wrap
+
+  &__wrap {
+    max-width: 695px;
+    margin: 0 auto;
+    padding: 16px 0px;
+
+    @media (min-width: 576px) {
+      padding: 80px 60px;
+    }
+  }
+
+  // .not-found__title
+
+  &__title {
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  // .not-found__text
+
+  &__text {
+    font-size: 18px;
+  }
+
+  // .not-found__link
+
+  &__link {
+    color: #01afff;
+
+    &:hover,
+    &:active {
+      color: #0096dc;
+    }
+  }
+}

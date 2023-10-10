@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <header class="header">
+  <header class="header" hidden>
     <div class="container header__container">
       <a class="header__link-logo" href="/">
         <img class="header__logo" src="./public/img/logo.svg" alt="Мебельный  маркет Koff">
@@ -66,7 +66,7 @@
     </div>
   </header>
   <main>
-    <div class="catalog">
+    <div class="catalog" hidden>
       <div class="container catalog__container">
         <ul class="catalog__list">
           <li class="catalog__item">
@@ -102,7 +102,7 @@
         </ul>
       </div>
     </div>
-    <div class="breadcrumb">
+    <div class="breadcrumb" hidden>
       <div class="container">
         <ul class="breadcrumb__list">
           <li class="breadcrumb__item">
@@ -121,7 +121,7 @@
       </div>
     </div>
 
-    <section class="goods">
+    <section class="goods" hidden>
       <div class="container">
         <h2 class="goods__title">Избранное</h2>
         <ul class="goods__list">
@@ -245,7 +245,7 @@
       </div>
     </section>
 
-    <section class="product">
+    <section class="product" hidden>
       <div class="container product__container">
         <h2 class="product__title">Кресло с подлокотниками</h2>
         <div class="product__picture">
@@ -383,7 +383,7 @@
       </div>
     </section>
 
-    <section class="cart">
+    <section class="cart" hidden>
       <div class="container cart__container">
         <h2 class="cart__title">Корзина</h2>
         <ul class="cart__products">
@@ -463,7 +463,7 @@
       </div>
     </section>
 
-    <section class="order">
+    <section class="order" hidden>
       <div class="order__header">
         <h2 class="order__header-title">Заказ успешно размещен</h2>
         <div class="order__header-price">20 000 ₽</div>
@@ -479,6 +479,15 @@
         <li class="order__info-item"><span>Способ получения</span><span>Доставка</span></li>
       </ul>
       <button class="order__btn">На главную</button>
+    </section>
+    <section class="not-found">
+      <div class="container not-found__container">
+        <div class="not-found__wrap">
+          <h2 class="not-found__title">Страница не найдена</h2>
+          <p class="not-found__text">Через 5 секунд вы будите перенаправлены <a href="/" class="not-found__link">на
+              главную страницу</a></p>
+        </div>
+      </div>
     </section>
 
   </main>
