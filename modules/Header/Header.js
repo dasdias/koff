@@ -1,5 +1,5 @@
+import { getLogo } from "../../features/Logo/logo";
 import { addContainer } from "../Main/addContainer";
-import logoImage from '/img/logo.svg'
 
 export class Header {
 	static instance = null;
@@ -21,7 +21,7 @@ export class Header {
 		if (this.isMoumted) {
 			return
 		}
-		const logo = this.getLogo();
+		const logo = getLogo();
 		const searchForm = this.getSearchForm();
 		const navigation = this.getNavigation();
 
@@ -36,18 +36,7 @@ export class Header {
 		this.isMoumted = false;
 	}
 
-	getLogo() {
-		const logo = document.createElement('a');
-		logo.classList.add('header__link-logo');
-		logo.href = '/'
 
-		const imgLogo = new Image();
-		imgLogo.classList.add('header__logo');
-		imgLogo.src = logoImage;
-		imgLogo.alt = "Мебельный  маркет Koff";
-		logo.append(imgLogo);
-		return logo
-	}
 	getSearchForm() {
 		const searchForm = document.createElement('form');
 		searchForm.classList.add('header__search');

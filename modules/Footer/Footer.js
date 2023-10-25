@@ -1,55 +1,57 @@
+import { getLogo } from "../../features/Logo/logo";
 import { addContainer } from "../Main/addContainer";
 import logoImage from '/img/logo.svg'
 
 export class Footer {
-  static instance = null;
+	static instance = null;
 
-  constructor() {
-    if (!Footer.instance) {
-      Footer.instance = this;
-      this.element = document.createElement('footer');
-      this.element.classList.add('footer');
-      this.containerElement = addContainer(this.element, 'footer__container');
-      this.isMoumted = false;
-    }
+	constructor() {
+		if (!Footer.instance) {
+			Footer.instance = this;
+			this.element = document.createElement('footer');
+			this.element.classList.add('footer');
+			this.containerElement = addContainer(this.element, 'footer__container');
+			this.isMoumted = false;
+		}
 
 
-    return Footer.instance;
-  }
+		return Footer.instance;
+	}
 
-  mount() {
-    if (this.isMoumted) {
-      return
-    }
-    const logo = this.getLogo();
+	mount() {
+		if (this.isMoumted) {
+			return
+		}
+		const logo = getLogo('footer__logo');
 
-    this.containerElement.append(logo)
 
-    this.containerElement.insertAdjacentHTML('beforeend', this.getHTML());
-    document.body.append(this.element)
-    this.isMoumted = true;
-  }
+		this.containerElement.append(logo)
 
-  unmount() {
-    this.element.remove();
-    this.isMoumted = false;
-  }
+		this.containerElement.insertAdjacentHTML('beforeend', this.getHTML());
+		document.body.append(this.element)
+		this.isMoumted = true;
+	}
 
-  getLogo() {
-    const logo = document.createElement('a');
-    logo.classList.add('footer__logo');
-    logo.href = '/'
+	unmount() {
+		this.element.remove();
+		this.isMoumted = false;
+	}
 
-    const imgLogo = new Image();
-    // imgLogo.classList.add('header__logo');
-    imgLogo.src = logoImage;
-    imgLogo.alt = "Мебельный  маркет Koff";
-    logo.append(imgLogo);
-    return logo
-  }
+	// getLogo() {
+	// 	const logo = document.createElement('a');
+	// 	logo.classList.add('footer__logo');
+	// 	logo.href = '/'
 
-  getHTML() {
-    return `
+	// 	const imgLogo = new Image();
+	// 	// imgLogo.classList.add('header__logo');
+	// 	imgLogo.src = logoImage;
+	// 	imgLogo.alt = "Мебельный  маркет Koff";
+	// 	logo.append(imgLogo);
+	// 	return logo
+	// }
+
+	getHTML() {
+		return `
       <div class="footer__contacts contacts">
         <a class="contacts__phone" href="tel:+79398391297">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,6 +102,6 @@ export class Footer {
       </ul>
       <p class="footer__copyright">© Koff, 2023</p>
     `
-  }
+	}
 
 }
