@@ -54,7 +54,6 @@ export class ProductList {
 			const listItemElem = document.createElement('li')
 			listItemElem.append(new Card(id, image, title, price).create());
 
-			console.log(listItemElem);
 			return listItemElem;
 		});
 		listElem.append(...listItems);

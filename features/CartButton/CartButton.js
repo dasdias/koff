@@ -1,13 +1,17 @@
 export class CartButton {
-	constructor(id) {
-		this.id = id;
+	constructor(classElem, text) {
+		this.classElem = classElem;
+		this.text = text;
 	}
 
-	create() {
+	create(id) {
 		const btn = document.createElement('button');
-		btn.classList.add('card__btn');
-		btn.dataset.id = this.id;
-		btn.textContent = 'В корзину';
+		btn.classList.add(this.classElem);
+		btn.dataset.id = id;
+		btn.textContent = this.text;
+		btn.addEventListener('click', () => {
+			console.log('Добавить товар в корзину');
+		})
 		return btn;
 	}
 }

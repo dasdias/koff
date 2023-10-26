@@ -1,4 +1,5 @@
 import { getLogo } from "../../features/Logo/logo";
+import { likeSvh } from "../../features/likeSVG/likeSvg";
 import { addContainer } from "../Main/addContainer";
 
 export class Header {
@@ -72,14 +73,15 @@ export class Header {
 		const favorietLink = document.createElement('a');
 		favorietLink.classList.add('header__link');
 		favorietLink.href = '/favorite';
-		favorietLink.innerHTML = `
-      <span class="header__link-text">Избранное</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M8.41337 13.8733C8.18671 13.9533 7.81337 13.9533 7.58671 13.8733C5.65337 13.2133 1.33337 10.46 1.33337 5.79332C1.33337 3.73332 2.99337 2.06665 5.04004 2.06665C6.25337 2.06665 7.32671 2.65332 8.00004 3.55998C8.67337 2.65332 9.75337 2.06665 10.96 2.06665C13.0067 2.06665 14.6667 3.73332 14.6667 5.79332C14.6667 10.46 10.3467 13.2133 8.41337 13.8733Z"
-          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    `
+		const favoriteText = document.createElement('span');
+		favoriteText.classList.add('header__link-text');
+		favoriteText.textContent = 'Избранное';
+		favorietLink.append(favoriteText);
+
+		likeSvh().then((svg) => {
+			favorietLink.append(svg);
+		})
+
 		const cartLink = document.createElement('a');
 		cartLink.classList.add('header__link');
 		cartLink.href = '/cart';
@@ -94,7 +96,7 @@ export class Header {
 		cartLink.append(linkText, countElement)
 
 		cartLink.insertAdjacentHTML('beforeend', `
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="header__link-cart" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5.87329 1.33325L3.45996 3.75325" stroke="currentColor" stroke-miterlimit="10" stroke-linecap="round"
           stroke-linejoin="round" />
         <path d="M10.1267 1.33325L12.54 3.75325" stroke="currentColor" stroke-miterlimit="10" stroke-linecap="round"

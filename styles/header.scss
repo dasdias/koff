@@ -116,6 +116,10 @@
 		align-items: center;
 		gap: 4px;
 
+		svg {
+			color: #fff;
+		}
+
 		@media (min-width: 580px) {
 			flex-direction: row;
 		}
@@ -123,13 +127,22 @@
 		&:hover,
 		&:focus {
 			color: var(--violet-hover);
+
+			svg {
+				color: var(--violet-hover);
+			}
 		}
 
 		&:focus-visible {
 			color: var(--violet-hover);
 			outline-color: var(--violet-hover);
-
 		}
+
+		.header__link-cart {
+			color: #000;
+		}
+
+
 	}
 
 	// .header__link-text

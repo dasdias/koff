@@ -8,6 +8,8 @@ export class Card {
 		this.image = image;
 		this.title = title;
 		this.price = price;
+		this.cartButton = new CartButton('card__btn', 'В корзину');
+		this.LikeButton = new LikeButton('card__favorite');
 	}
 
 	create() {
@@ -43,8 +45,8 @@ export class Card {
 
 		info.append(title);
 
-		const btnCart = new CartButton(this.id).create();
-		const btnFavorite = new LikeButton(this.id).create();
+		const btnCart = this.cartButton.create(this.id);
+		const btnFavorite = this.LikeButton.create(this.id);
 
 		article.append(link, info, btnCart, btnFavorite);
 
