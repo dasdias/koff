@@ -25,5 +25,55 @@ class StorageService {
 }
 
 export class FavoriteService extends StorageService {
+	static instance;
+	constructor(key = 'favorite') {
+		if (!FavoriteService.instance) {
+			super(key);
+			this.favorite = new Set(this.get());
+			FavoriteService.instance = this;
+		}
+		return FavoriteService.instance;
+	}
 
+	get() {
+		const data = super.get();
+
+		if (data) {
+			const favorite = JSON.parse(data);
+			if (Array.isArray(favorite)) {
+				return favorite;
+			}
+		}
+		return [];
+	}
+
+	add(value) {
+		this.favorite.add(value);
+		this.set([...this.favorite]);
+	}
+
+	remove(value) {
+		if (this.check(value)) {
+			this.favorite.delete(value);
+			this.set([...this.favorite])
+			return true;
+		}
+		return false;
+	}
+
+	check(value) {
+		return this.favorite.has(value)
+	}
+
+}
+
+export class AccessKeyService extends StorageService {
+	static instance;
+	constructor(key = 'accessKey') {
+		if (!AccessKeyService.instance) {
+			super(key);
+			AccessKeyService.instance = this;
+		}
+		return AccessKeyService.instance;
+	}
 }
