@@ -84,7 +84,7 @@ const init = () => {
 		.on("/favorite", async () => {
 			const favorite = new FavoriteService().get();
 			const { data: product } = await api.getProducts({ list: favorite.join(",") });
-			new ProductList().mount(new Main().element, product, "Избранное")
+			new ProductList().mount(new Main().element, product, "Избранное", 'Вы ничего не добавили в избранное, пожалуйста, добавьте что-нибудь...')
 			router.updatePageLinks();
 		}, {
 			leave(done) {
